@@ -1,0 +1,207 @@
+host: http://oa.west2online.com:8080
+
+登录：
+host+/Property/servlet/login?name=yaochi&pass=yaochi   (name 用户名)
+
+{"status":true,"data":{"level":"1","name":"LEE瑶池","realname":"李瑶池"}}      level 1为普通用户  
+{"status":false} 
+
+注册
+
+host+/Property/servlet/signup?name=yaochi&pass=liyaochi&realname=李瑶池&phone=18649735773&address=32号楼605  
+（address不要使用类似32#605   #为特殊字符）
+
+{"status":true} 
+
+{"status":false,"mes":"用户名已存在"} 
+
+公告
+
+host+/Property/servlet/notice
+
+{"status":true,"list":[{ "title": "题目一","date": "2014-9-29","content": "公告内容一"},
+{ "title": "题目2","date": "2014-9-29","content": "公告内容2"},
+{ "title": "题目3","date": "2014-9-29","content": "公告内容3"},
+{ "title": "题目4","date": "2014-9-29","content": "公告内容4"}]}
+
+{"status":false,"mes":"暂无公告"} 
+
+
+活动列表
+host+/Property/servlet/activity
+
+{
+    "status": true,
+    "total": "2",
+    "list": [
+        {
+            "id": "1",
+            "person": "yaochi",
+            "title": "活动标题",
+            "date": "2014-9-29",
+            "content": "公告内容一",
+            "comment": {
+                "count": "2",
+                "data": [
+                    {
+                        "person": "user1",
+                        "content": "评论内容1"
+                    },
+                    {
+                        "person": "user2",
+                        "content": "评论内容2"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "2",
+            "person": "yaochi",
+            "title": "活动标题",
+            "date": "2014-9-29",
+            "content": "公告内容一",
+            "comment": {
+                "count": "2",
+                "data": [
+                    {
+                        "person": "user1",
+                        "content": "评论内容1"
+                    },
+                    {
+                        "person": "user2",
+                        "content": "评论内容2"
+                    }
+                ]
+            }
+        }
+    ]
+}
+添加活动
+
+host+/Property/servlet/addactivity?title=活动一&content=周日去逛窑子。。。&person=李瑶池
+{"status":true} 
+
+{"status":false,"mes":" "} 
+
+添加回复
+
+host+/Property/servlet/addcomment?id=1&content=评论内容。。。&person=李瑶池
+
+{"status":true} 
+
+{"status":false,"mes":" "} 
+
+意见反馈
+host+/Property/servlet/feedback?content=反馈内容。。。&person=李瑶池
+
+
+{"status":true} 
+
+{"status":false,"mes":" "} 
+
+消息提醒 推送
+host+/Property/servlet/push?name=李瑶池&type=0 are
+{
+    "hasmes": true,
+    "list": [
+        {
+            "type": "0",
+            "name": "管理员发布信息"
+        },
+        {
+            "type": "1",
+            "name": "新公告"
+        },
+        {
+            "type": "2",
+            "name": "有待缴费缴费"
+        }
+    ]
+}
+host+/Property/servlet/push?name=李瑶池&type=1  (1确认成功接收信息)    
+
+{"status":true} 
+
+{"status":false,"mes":" "} 
+
+
+
+缴费
+host+/Property/servlet/bill?name=李瑶池
+
+{
+    "status": true,
+    "address": "32#605",
+    "rest": "29.5",
+    "needpay": "81.3",
+    "yuliu": "0.0",
+    "history": [
+        {
+            "data": "2014-10",
+            "water": "3.6",
+            "electric": "100.0",
+            "other": "122",
+            "image": "url"
+        },
+        {
+            "data": "2014-9",
+            "water": "3.6",
+            "electric": "100.0",
+            "other": "122",
+            "image": "url"
+        }
+    ]
+}
+
+商铺list
+host +/Property/servlet/marketlist
+{
+    "total": "2",
+    "status": true,
+    "list": [
+        {
+            "content": "店铺描述一",
+            "id": "2",
+            "person": "yaochi",
+            "marketname": "店铺",
+            "date": "2014-9-29",
+            "goods": {
+                "count": "2",
+                "data": [
+                    {
+                        "content": "描述内容1",
+                        "id": "1",
+                        "name": "棒棒糖"
+                    },
+                    {
+                        "content": "描述内容1",
+                        "id": "2",
+                        "name": "棒棒糖"
+                    }
+                ]
+            }
+        },
+        {
+            "content": "店铺描述一",
+            "id": "1",
+            "person": "yaochi",
+            "marketname": "店铺",
+            "date": "2014-9-29",
+            "goods": {
+                "count": "2",
+                "data": [
+                    {
+                        "content": "描述内容1",
+                        "id": "1",
+                        "name": "棒棒糖"
+                    },
+                    {
+                        "content": "描述内容1",
+                        "id": "2",
+                        "name": "棒棒糖"
+                    }
+                ]
+            }
+        }
+    ]
+}
